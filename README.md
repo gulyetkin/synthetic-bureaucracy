@@ -41,17 +41,9 @@ screenshots/       UI screenshots (placeholder)
 
 ## Screenshots
 
-### Healthy workflow — gate pass
-
-![Healthy workflow pass](screenshots/analyze-healthy-pass.png)
-
-### Bloated workflow — high risk
-
-![Bloated workflow high risk](screenshots/analyze-bloated-risk-high.png)
-
-### Schema validation — analysis error
-
-![Schema validation error](screenshots/analyze-schema-error.png)
+| Healthy workflow — gate pass | Bloated workflow — high risk | Schema validation — analysis error |
+|---|---|---|
+| <img src="screenshots/analyze-healthy-pass.png" width="260"> | <img src="screenshots/analyze-bloated-risk-high.png" width="260"> | <img src="screenshots/analyze-schema-error.png" width="260"> |
 
 ## Example outcomes
 
