@@ -17,7 +17,7 @@
       "level": 0.9,
       "margin": 10,
       "method": "metadata_completeness_heuristic",
-      "explanation": "Heuristic band from sparse purpose/context metadata \u2014 not a calibrated statistical interval. See sbr/health.py."
+      "explanation": "Heuristic band from sparse purpose/context metadata \u2014 not a calibrated statistical interval."
     },
     "metadata_completeness": 0.45,
     "contextual_metadata": {
