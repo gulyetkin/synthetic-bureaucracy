@@ -36,7 +36,7 @@ SBI is a **risk index** (higher = more synthetic bureaucracy), not a health perc
 examples/          Synthetic native traces (safe, fictional scenarios)
 reports/           Example JSON reports produced by the private engine
 docs/              Native trace schema and CI exit code reference
-screenshots/       UI screenshots (placeholder)
+screenshots/       UI screenshots from the browser demo
 ```
 
 ## Screenshots
