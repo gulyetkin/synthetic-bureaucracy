@@ -1,0 +1,175 @@
+{
+  "workflow_id": "bloated_workflow_001",
+  "expected_outcome": "Produce the quarterly planning deliverable with signed-off evidence.",
+  "final_status": "not_completed",
+  "input_format": "native",
+  "normalized_message_count": 5,
+  "normalized_tool_call_count": 0,
+  "normalization_warnings": [],
+  "synthetic_bureaucracy_index": 100,
+  "grade": "F",
+  "health_assessment": {
+    "interpretation": "health_metric",
+    "sbi_score": 100,
+    "confidence_interval": {
+      "low": 90,
+      "high": 100,
+      "level": 0.9,
+      "margin": 10,
+      "method": "metadata_completeness_heuristic",
+      "explanation": "Heuristic band from sparse purpose/context metadata \u2014 not a calibrated statistical interval. See sbr/health.py."
+    },
+    "metadata_completeness": 0.45,
+    "contextual_metadata": {
+      "policy_step_ratio": 0.0,
+      "evidence_backed_policy_ratio": 0.0,
+      "purpose_metadata_ratio": 0.0,
+      "compliance_saturation_ratio": 0.0,
+      "compliance_saturation_flag": false,
+      "has_purpose_metadata": false,
+      "unbacked_protected_step_count": 0,
+      "regulatory_context": "",
+      "compliance_level": ""
+    },
+    "contextual_notes": [
+      "Purpose metadata is sparse; confidence band is widened. Richer step purpose tags improve interpretability."
+    ]
+  },
+  "real_work_completion_ratio": 0.0,
+  "coordination_overhead": 1.0,
+  "diagnosis": "The workflow produced circular coordination without evidence-backed progress or a clear owner.",
+  "top_risks": [
+    "Circular handoff",
+    "Process and coordination overhead",
+    "No clear decision owner"
+  ],
+  "recompile_summary": "Highest impact likely sits at repeated handoff boundaries; review ownership and termination criteria before merging agents.",
+  "failure_modes": [
+    {
+      "id": "circular_handoff",
+      "label": "Circular Handoff",
+      "severity": "high",
+      "description": "Agents repeatedly hand work to each other without making progress, forming a coordination loop.",
+      "evidence": [
+        "cycle: planner_agent -> reviewer_agent -> planner_agent"
+      ],
+      "disposition": "failure",
+      "purpose_tags": []
+    },
+    {
+      "id": "ownerless_decision",
+      "label": "Ownerless Decision",
+      "severity": "medium",
+      "description": "A required decision or completion step has no assigned owner, causing the workflow to stall.",
+      "evidence": [
+        "planner_agent: Looping back to reviewer. We seem to be going in circles on this deliverable."
+      ],
+      "disposition": "failure",
+      "purpose_tags": []
+    },
+    {
+      "id": "process_inflation",
+      "label": "Process Inflation",
+      "severity": "high",
+      "description": "The workflow accumulated process, documentation, or validation overhead without tool-backed execution or completion.",
+      "evidence": [
+        "planner_agent: Starting quarterly plan. Need reviewer alignment before substantive work begins.",
+        "reviewer_agent: Need planner context before I can review \u2014 please confirm scope with planner.",
+        "planner_agent: Forwarding to reviewer for policy review. Waiting for reviewer to respond."
+      ],
+      "disposition": "failure",
+      "purpose_tags": []
+    }
+  ],
+  "metrics": {
+    "message_count": 5,
+    "tool_call_count": 0,
+    "coordination_message_count": 5,
+    "productive_tool_call_count": 0,
+    "coordination_overhead": 1.0,
+    "real_work_completion_ratio": 0.0,
+    "completion_penalty": 0.2,
+    "failure_mode_count": 3,
+    "raw_sbi": 1.0
+  },
+  "detected_claims": [],
+  "missing_evidence": [],
+  "evidence_backed_claims": [],
+  "old_workflow_summary": "User -> planner_agent -> reviewer_agent -> planner_agent -> reviewer_agent -> planner_agent -> not_completed",
+  "recommended_workflow": "Impact hotspots cluster around coordination steps before tool-backed execution; review handoff boundaries rather than collapsing agents blindly.",
+  "recommendations": [
+    {
+      "id": "impact_circular_handoff",
+      "priority": "high",
+      "action": "Circular handoffs between agents account for an estimated 100% of coordination overhead. Repeated routing without tool-backed progress increases latency without advancing the expected outcome.",
+      "rationale": "Impact analysis for circular_handoff; decision remains with the workflow owner."
+    },
+    {
+      "id": "impact_process_inflation",
+      "priority": "high",
+      "action": "Process and documentation artifacts dominate the trace with 5 coordination-heavy message(s) and no productive tool calls.",
+      "rationale": "Impact analysis for process_inflation; decision remains with the workflow owner."
+    },
+    {
+      "id": "impact_ownerless_decision",
+      "priority": "medium",
+      "action": "At least one decision gate has no accountable owner, correlating with workflow stall before completion.",
+      "rationale": "Impact analysis for ownerless_decision; decision remains with the workflow owner."
+    },
+    {
+      "id": "enforce_completion_gate",
+      "priority": "medium",
+      "action": "Add a completion gate that verifies the expected outcome was achieved before marking the workflow as completed.",
+      "rationale": "Workflows that end without completion often lack a final validation step tied to the stated expected outcome."
+    }
+  ],
+  "refactoring_opportunities": [
+    {
+      "id": "impact_circular_handoff",
+      "title": "Refactoring opportunity: Circular Handoff",
+      "impact_analysis": "Circular handoffs between agents account for an estimated 100% of coordination overhead. Repeated routing without tool-backed progress increases latency without advancing the expected outcome.",
+      "related_failure_mode": "circular_handoff",
+      "affected_metrics": {
+        "coordination_overhead": 1.0,
+        "real_work_completion_ratio": 0.0,
+        "message_count": 5
+      },
+      "confidence": "high",
+      "human_review_required": true
+    },
+    {
+      "id": "impact_process_inflation",
+      "title": "Refactoring opportunity: Process Inflation",
+      "impact_analysis": "Process and documentation artifacts dominate the trace with 5 coordination-heavy message(s) and no productive tool calls.",
+      "related_failure_mode": "process_inflation",
+      "affected_metrics": {
+        "coordination_overhead": 1.0,
+        "real_work_completion_ratio": 0.0,
+        "message_count": 5
+      },
+      "confidence": "high",
+      "human_review_required": true
+    },
+    {
+      "id": "impact_ownerless_decision",
+      "title": "Refactoring opportunity: Ownerless Decision",
+      "impact_analysis": "At least one decision gate has no accountable owner, correlating with workflow stall before completion.",
+      "related_failure_mode": "ownerless_decision",
+      "affected_metrics": {
+        "coordination_overhead": 1.0,
+        "real_work_completion_ratio": 0.0,
+        "message_count": 5
+      },
+      "confidence": "medium",
+      "human_review_required": true
+    }
+  ],
+  "schema_version": "1.0",
+  "gate": {
+    "enabled": true,
+    "passed": false,
+    "enforce_config_gate": false,
+    "fail_above": 50,
+    "failed_on_score": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "workflow_id": "bloated_workflow_001",
+  "expected_outcome": "Produce the quarterly planning deliverable with signed-off evidence.",
+  "messages": [
+    {
+      "agent": "planner_agent",
+      "content": "Starting quarterly plan. Need reviewer alignment before substantive work begins."
+    },
+    {
+      "agent": "reviewer_agent",
+      "content": "Need planner context before I can review — please confirm scope with planner."
+    },
+    {
+      "agent": "planner_agent",
+      "content": "Forwarding to reviewer for policy review. Waiting for reviewer to respond."
+    },
+    {
+      "agent": "reviewer_agent",
+      "content": "Handing off back to planner — please restate objectives so I can proceed."
+    },
+    {
+      "agent": "planner_agent",
+      "content": "Looping back to reviewer. We seem to be going in circles on this deliverable."
+    }
+  ],
+  "tool_calls": [],
+  "final_status": "not_completed"
+}

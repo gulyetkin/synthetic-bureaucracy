@@ -1,0 +1,7 @@
+{
+  "workflow_id": "empty_workflow_001",
+  "expected_outcome": "Complete a task that never started.",
+  "messages": [],
+  "tool_calls": [],
+  "final_status": "not_completed"
+}

@@ -1,0 +1,67 @@
+{
+  "workflow_id": "healthy_workflow_001",
+  "expected_outcome": "Determine refund eligibility and execute refund if eligible.",
+  "final_status": "completed",
+  "input_format": "native",
+  "normalized_message_count": 3,
+  "normalized_tool_call_count": 3,
+  "normalization_warnings": [],
+  "synthetic_bureaucracy_index": 17,
+  "grade": "A",
+  "health_assessment": {
+    "interpretation": "health_metric",
+    "sbi_score": 17,
+    "confidence_interval": {
+      "low": 7,
+      "high": 27,
+      "level": 0.9,
+      "margin": 10,
+      "method": "metadata_completeness_heuristic",
+      "explanation": "Heuristic band from sparse purpose/context metadata \u2014 not a calibrated statistical interval. See sbr/health.py."
+    },
+    "metadata_completeness": 0.45,
+    "contextual_metadata": {
+      "policy_step_ratio": 0.0,
+      "evidence_backed_policy_ratio": 0.0,
+      "purpose_metadata_ratio": 0.0,
+      "compliance_saturation_ratio": 0.0,
+      "compliance_saturation_flag": false,
+      "has_purpose_metadata": false,
+      "unbacked_protected_step_count": 0,
+      "regulatory_context": "",
+      "compliance_level": ""
+    },
+    "contextual_notes": [
+      "Purpose metadata is sparse; confidence band is widened. Richer step purpose tags improve interpretability."
+    ]
+  },
+  "real_work_completion_ratio": 0.8333,
+  "coordination_overhead": 0.3333,
+  "diagnosis": "The workflow completed with evidence-backed progress and limited coordination overhead.",
+  "top_risks": [],
+  "recompile_summary": "No major refactoring hotspots detected; continue monitoring coordination-to-execution ratio.",
+  "failure_modes": [],
+  "metrics": {
+    "message_count": 3,
+    "tool_call_count": 3,
+    "coordination_message_count": 1,
+    "productive_tool_call_count": 3,
+    "coordination_overhead": 0.3333,
+    "real_work_completion_ratio": 0.8333,
+    "completion_penalty": 0.0,
+    "failure_mode_count": 0,
+    "raw_sbi": 0.1667
+  },
+  "detected_claims": [],
+  "missing_evidence": [],
+  "evidence_backed_claims": [],
+  "old_workflow_summary": "User -> intake_agent -> execution_agent -> completed",
+  "recommended_workflow": "Observed pattern suggests concentration of policy checks and execution around refund_owner_agent with evidence-backed tool gates.",
+  "recommendations": [],
+  "refactoring_opportunities": [],
+  "schema_version": "1.0",
+  "gate": {
+    "enabled": false,
+    "passed": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "workflow_id": "healthy_workflow_001",
+  "expected_outcome": "Determine refund eligibility and execute refund if eligible.",
+  "messages": [
+    {
+      "agent": "intake_agent",
+      "content": "Customer requests refund for order #48291. Gathering order details."
+    },
+    {
+      "agent": "intake_agent",
+      "content": "Order is within 30-day return window. Checking eligibility."
+    },
+    {
+      "agent": "execution_agent",
+      "content": "Refund executed successfully. Customer notified."
+    }
+  ],
+  "tool_calls": [
+    {
+      "agent": "intake_agent",
+      "tool": "fetch_record",
+      "result": "record_found: order #48291, purchase_date=2026-05-20",
+      "args": {"order_id": "48291"}
+    },
+    {
+      "agent": "intake_agent",
+      "tool": "validate_eligibility",
+      "result": "eligible: true, reason=within_return_window",
+      "args": {"order_id": "48291"}
+    },
+    {
+      "agent": "execution_agent",
+      "tool": "execute_refund",
+      "result": "refund_completed: $49.99",
+      "args": {"order_id": "48291", "amount": 49.99}
+    }
+  ],
+  "final_status": "completed"
+}
