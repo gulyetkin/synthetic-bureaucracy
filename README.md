@@ -39,6 +39,20 @@ docs/              Native trace schema and CI exit code reference
 screenshots/       UI screenshots (placeholder)
 ```
 
+## Screenshots
+
+### Healthy workflow — gate pass
+
+![Healthy workflow pass](screenshots/analyze-healthy-pass.png)
+
+### Bloated workflow — high risk
+
+![Bloated workflow high risk](screenshots/analyze-bloated-risk-high.png)
+
+### Schema validation — analysis error
+
+![Schema validation error](screenshots/analyze-schema-error.png)
+
 ## Example outcomes
 
 | Trace | SBI | Gate | Exit code |
