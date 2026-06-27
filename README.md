@@ -75,6 +75,16 @@ Messages must use **`agent`** (not `role`). Tool calls must use **`tool`** (not 
 
 Details: [docs/native-trace-schema.md](docs/native-trace-schema.md)
 
+## Importer / adapter proofs
+
+SBR is built around a **native trace JSON contract** — the primary deterministic input for scoring and CI gates. For teams exporting traces from other runtimes, SBR also supports **local, schema-tolerant import adapters** that normalize external JSON into that native shape before analysis.
+
+- **Native first.** Use native SBR traces for the most predictable CI behavior and clearest failure-mode evidence.
+- **LangSmith-style wrapped export proof.** A synthetic traced workflow was exported in a LangSmith-style wrapped run shape (`source`, `trace_id`, flat `runs[]`) and normalized locally through SBR’s LangSmith-format adapter. The export contained fictional order data only — no customer payloads, API keys, or production secrets.
+- **Not an official integration.** Adapters are offline normalizers for review and engineering validation. They are **not** official LangSmith, Langfuse, CrewAI, or AutoGen integrations, certifications, or partnerships.
+
+This showcase repo documents outcomes and examples only. It does **not** ship the private analyzer or adapter implementation.
+
 ## Try it
 
 1. Open the [browser demo](https://syntheticbureaucracy.com/analyze)
